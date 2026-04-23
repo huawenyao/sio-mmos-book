@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIO-MMOS丛书 | 认知-行动操作系统</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#0a0a0f;--s:#12121a;--g1:linear-gradient(135deg,#667eea,#764ba2);--g2:linear-gradient(135deg,#f093fb,#f5576c);--g3:linear-gradient(135deg,#4facfe,#00f2fe);--g4:linear-gradient(135deg,#43e97b,#38f9d7);--tl:#fff;--tm:rgba(255,255,255,.7);--cb:rgba(255,255,255,.03);--ch:rgba(255,255,255,.06);--br:rgba(255,255,255,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--p);color:var(--tl);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--br);display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Noto Serif SC',serif;font-size:1.4rem;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.links{display:flex;gap:2rem;list-style:none}
+.links a{color:var(--tm);text-decoration:none;font-size:.9rem;transition:.3s}
+.links a:hover{color:var(--tl)}
+.cta{padding:.6rem 1.5rem;background:var(--g1);border:none;border-radius:50px;color:#fff;font-weight:600;cursor:pointer}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:6rem 2rem 4rem;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(102,126,234,.2),transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(240,147,251,.15),transparent 40%),radial-gradient(ellipse at 60% 80%,rgba(67,233,123,.1),transparent 40%)}
+#heroCanvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.content{position:relative;z-index:1;max-width:850px}
+.badge{display:inline-block;padding:.5rem 1.25rem;background:var(--cb);border:1px solid var(--br);border-radius:50px;font-size:.85rem;color:#ff6b6b;margin-bottom:1.5rem}
+h1{font-family:'Noto Serif SC',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.25;margin-bottom:1.25rem}
+h1 span{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{font-size:clamp(1rem,2vw,1.15rem);color:var(--tm);max-width:600px;margin:0 auto 2rem}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{padding:.9rem 1.8rem;border-radius:50px;font-weight:600;cursor:pointer;transition:.3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-p{background:var(--g1);color:#fff;border:none}
+.btn-s{background:transparent;color:var(--tl);border:1px solid var(--br)}
+.sec{padding:5rem 2rem}
+.box{max-width:1200px;margin:0 auto}
+.hd{text-align:center;margin-bottom:3rem}
+.tag{display:inline-block;padding:.25rem 1rem;background:var(--cb);border:1px solid var(--br);border-radius:50px;font-size:.7rem;color:#667eea;letter-spacing:2px;margin-bottom:.75rem}
+.hd h2{font-family:'Noto Serif SC',serif;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:.5rem}
+.hd p{color:var(--tm);max-width:500px;margin:0 auto}
+.dark{background:var(--s)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.card{background:var(--cb);border:1px solid var(--br);border-radius:16px;padding:1.5rem;transition:.3s;text-align:center}
+.card:hover{background:var(--ch);transform:translateY(-4px)}
+.card h3{font-size:1.1rem;margin-bottom:.4rem;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card p{color:var(--tm);font-size:.9rem}
+.arch{display:flex;flex-direction:column;gap:1rem;max-width:800px;margin:0 auto}
+.layer{display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:var(--cb);border:1px solid var(--br);border-radius:12px;transition:.3s}
+.layer:hover{background:var(--ch);transform:translateX(8px)}
+.layer .lbl{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;min-width:50px;text-align:center}
+.layer.dao .lbl{color:#667eea}
+.layer.fa .lbl{color:#f093fb}
+.layer.shu .lbl{color:#4facfe}
+.layer.shi .lbl{color:#43e97b}
+.layer.qi .lbl{color:#fa709a}
+.layer h3{font-size:1.05rem;margin-bottom:.25rem}
+.layer p{color:var(--tm);font-size:.85rem}
+.inno{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.ino{background:var(--cb);border:1px solid var(--br);border-radius:16px;padding:1.5rem}
+.ino h3{font-size:1rem;margin-bottom:.75rem}
+.ino .old{color:#ff6b6b;font-size:.85rem}
+.ino .new{color:#43e97b;font-size:.85rem}
+.hl{background:var(--s);padding:4rem 2rem}
+.hlbox{max-width:1000px;margin:0 auto}
+.hlcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.hlc{background:var(--cb);border:1px solid var(--br);border-radius:16px;padding:1.5rem;text-align:center;transition:.3s}
+.hlc:hover{background:var(--ch);transform:scale(1.02)}
+.hlc h3{font-size:1rem;margin-bottom:.5rem;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hlc p{color:var(--tm);font-size:.85rem;margin-bottom:.75rem}
+.hlc .price{font-size:1.5rem;font-weight:700;color:#ffd700;margin-bottom:.5rem}
+.hlc ul{text-align:left;list-style:none;font-size:.8rem;color:var(--tm)}
+.hlc li{padding:.25rem 0}
+footer{background:var(--s);padding:3rem 2rem;text-align:center;border-top:1px solid var(--br)}
+footer p{color:var(--tm);font-size:.85rem}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">SIO-MMOS</div>
+<ul class="links">
+<li><a href="#position">定位</a></li>
+<li><a href="#users">用户</a></li>
+<li><a href="#arch">架构</a></li>
+<li><a href="#inno">创新</a></li>
+<li><a href="#price">版本</a></li>
+</ul>
+<button class="cta">立即获取</button>
+</nav>
+<section class="hero">
+<canvas id="heroCanvas"></canvas>
+<div class="content">
+<div class="badge">复杂性时代的认知操作系统</div>
+<h1><span>SIO-MMOS丛书</span><br>认知-行动操作系统</h1>
+<p class="subtitle">从哲学本体论到工程实践，构建完整的认知-行动闭环。道法术势器五位一体，驾驭复杂性时代。</p>
+<div class="btns">
+<a href="#arch" class="btn btn-p">探索架构</a>
+<a href="#price" class="btn btn-s">查看版本</a>
+</div>
+</div>
+</section>
+<section id="position" class="sec dark">
+<div class="box">
+<div class="hd">
+<span class="tag">POSITIONING</span>
+<h2>核心定位</h2>
+<p>SIO-MMOS丛书 = 认知-行动操作系统</p>
+</div>
+<div class="grid">
+<div class="card">
+<h3>哲学层面</h3>
+<p>复杂性时代的新本体论——SIO系统整合本体论</p>
+</div>
+<div class="card">
+<h3>科学层面</h3>
+<p>跨学科研究的方法论统一框架</p>
+</div>
+<div class="card">
+<h3>工程层面</h3>
+<p>智能社会生态的技术实现指南</p>
+</div>
+<div class="card">
+<h3>实践层面</h3>
+<p>可操作的认知升级工具箱</p>
+</div>
+</div>
+</div>
+</section>
+<section id="users" class="sec">
+<div class="box">
+<div class="hd">
+<span class="tag">TARGET USERS</span>
+<h2>目标用户</h2>
+<p>为各类专业人士提供系统性价值</p>
+</div>
+<div class="grid">
+<div class="card">
+<h3>AI/ML工程师</h3>
+<p>从本体论到工程实践的认知框架，MAS设计模式</p>
+</div>
+<div class="card">
+<h3>系统架构师</h3>
+<p>SIO五维分析框架，涌现性设计原则</p>
+</div>
+<div class="card">
+<h3>产品设计师</h3>
+<p>认知智能体架构，人机协同设计原则</p>
+</div>
+<div class="card">
+<h3>企业战略家</h3>
+<p>系统动力学工具，趋势演化分析框架</p>
+</div>
+<div class="card">
+<h3>学术研究者</h3>
+<p>SIO本体论作为统一框架，跨学科整合方法</p>
+</div>
+<div class="card">
+<h3>创业者/投资者</h3>
+<p>差异化定位方法论，技术护城河构建</p>
+</div>
+</div>
+</div>
+</section>
+<section id="arch" class="sec dark">
+<div class="box">
+<div class="hd">
+<span class="tag">ARCHITECTURE</span>
+<h2>道法术势器 五位一体</h2>
+<p>从哲学本体论到工程实践的完整架构</p>
+</div>
+<div class="arch">
+<div class="layer dao">
+<div class="lbl">道</div>
+<div>
+<h3>哲学本体论</h3>
+<p>什么是存在？如何认识？—— 第一卷：复杂系统哲学原理</p>
+</div>
+</div>
+<div class="layer fa">
+<div class="lbl">法</div>
+<div>
+<h3>科学方法论</h3>
+<p>如何系统性地研究复杂现象？—— 第二卷：复杂性科学研究方法论</p>
+</div>
+</div>
+<div class="layer shu">
+<div class="lbl">术</div>
+<div>
+<h3>工程技术</h3>
+<p>如何构建可操作的技术系统？—— 第三卷：智能社会生态工程实践</p>
+</div>
+</div>
+<div class="layer shi">
+<div class="lbl">势</div>
+<div>
+<h3>演化规律</h3>
+<p>系统如何演化？如何顺势而为？—— 贯穿全书的动态分析框架</p>
+</div>
+</div>
+<div class="layer qi">
+<div class="lbl">器</div>
+<div>
+<h3>工具模板</h3>
+<p>具体可操作的工具？—— 实践指南专册 + 数字工具</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="inno" class="sec">
+<div class="box">
+<div class="hd">
+<span class="tag">INNOVATION</span>
+<h2>核心创新</h2>
+<p>范式转换与方法论突破</p>
+</div>
+<div class="inno">
+<div class="ino">
+<h3>本体论创新</h3>
+<p class="old">传统：实体本体论</p>
+<p class="new">SIO：结构+整合+本体生成</p>
+</div>
+<div class="ino">
+<h3>认识论创新</h3>
+<p class="old">传统：表征反映</p>
+<p class="new">SIO：参与建构（主体-工具-世界三元互动）</p>
+</div>
+<div class="ino">
+<h3>方法论创新</h3>
+<p class="old">传统：还原分析</p>
+<p class="new">SIO：整合生成（跨层次、跨尺度、跨领域）</p>
+</div>
+<div class="ino">
+<h3>实践论创新</h3>
+<p class="old">传统：控制工程</p>
+<p class="new">SIO：协同演化（从控制到培育）</p>
+</div>
+</div>
+</div>
+</section>
+<section id="price" class="hl">
+<div class="hlbox">
+<div class="hd">
+<span class="tag">PRICING</span>
+<h2>版本与定价</h2>
+<p>选择适合您的版本</p>
+</div>
+<div class="hlcards">
+<div class="hlc">
+<h3>电子版</h3>
+<p>完整内容+AI伴读</p>
+<div class="price">¥199</div>
+<ul>
+<li>完整电子书内容</li>
+<li>AI智能问答</li>
+<li>学习路径推荐</li>
+</ul>
+</div>
+<div class="hlc">
+<h3>纸质版</h3>
+<p>精装典藏+批注空间</p>
+<div class="price">¥299/卷</div>
+<ul>
+<li>精装纸质书</li>
+<li>舒适阅读体验</li>
+<li>批注笔记空间</li>
+</ul>
+</div>
+<div class="hlc">
+<h3>全套版</h3>
+<p>四卷+实践指南+工具箱</p>
+<div class="price">¥999</div>
+<ul>
+<li>四卷完整内容</li>
+<li>实践指南专册</li>
+<li>数字工具箱</li>
+</ul>
+</div>
+<div class="hlc">
+<h3>企业版</h3>
+<p>定制内训+咨询服务</p>
+<div class="price">¥9999+</div>
+<ul>
+<li>企业定制培训</li>
+<li>专属咨询服务</li>
+<li>团队协作支持</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<p>© 2026 SIO-MMOS丛书编委会 | 复杂性时代的认知操作系统</p>
+</footer>
+<script>
+// ====== Hero粒子网络动画 ======
+const heroCanvas = document.getElementById('heroCanvas');
+const ctx = heroCanvas.getContext('2d');
+let particles = [];
+let mouse = {x: null, y: null};
+
+function resizeHeroCanvas() {
+    heroCanvas.width = window.innerWidth;
+    heroCanvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * heroCanvas.width;
+        this.y = Math.random() * heroCanvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.color = this.getRandomColor();
+        this.alpha = Math.random() * 0.5 + 0.2;
+    }
+    
+    getRandomColor() {
+        const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+    
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        
+        if (this.x > heroCanvas.width) this.x = 0;
+        if (this.x < 0) this.x = heroCanvas.width;
+        if (this.y > heroCanvas.height) this.y = 0;
+        if (this.y < 0) this.y = heroCanvas.height;
+        
+        // 鼠标交互
+        if (mouse.x && mouse.y) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150) {
+                this.x -= dx * 0.02;
+                this.y -= dy * 0.02;
+            }
+        }
+    }
+    
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+    }
+}
+
+function initParticles() {
+    particles = [];
+    const numParticles = Math.min(100, (heroCanvas.width * heroCanvas.height) / 15000);
+    for (let i = 0; i < numParticles; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function connectParticles() {
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist < 120) {
+                ctx.beginPath();
+                ctx.strokeStyle = particles[i].color;
+                ctx.globalAlpha = (120 - dist) / 120 * 0.15;
+                ctx.lineWidth = 0.5;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            }
+        }
+    }
+}
+
+function animateHero() {
+    ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+    
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    
+    connectParticles();
+    requestAnimationFrame(animateHero);
+}
+
+// 初始化Hero动画
+resizeHeroCanvas();
+initParticles();
+animateHero();
+
+window.addEventListener('resize', () => {
+    resizeHeroCanvas();
+    initParticles();
+});
+
+window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+// ====== 架构层级动画 ======
+const layers = document.querySelectorAll('.layer');
+const layerColors = ['#667eea', '#f093fb', '#4facfe', '#43e97b', '#fa709a'];
+
+const layerObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            const layer = entry.target;
+            const idx = Array.from(layers).indexOf(layer);
+            setTimeout(() => {
+                layer.style.opacity = '1';
+                layer.style.transform = 'translateX(0)';
+                layer.style.borderLeft = `3px solid ${layerColors[idx]}`;
+            }, idx * 150);
+        }
+    });
+}, {threshold: 0.2});
+
+layers.forEach(layer => {
+    layer.style.opacity = '0';
+    layer.style.transform = 'translateX(-50px)';
+    layer.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    layerObserver.observe(layer);
+});
+
+// ====== 创新卡片动画 ======
+const inoCards = document.querySelectorAll('.ino');
+
+const inoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const card = entry.target;
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+            
+            // 添加脉冲效果
+            const oldText = card.querySelector('.old');
+            const newText = card.querySelector('.new');
+            
+            setTimeout(() => {
+                if (oldText) {
+                    oldText.style.animation = 'pulse 1s ease';
+                }
+            }, 300);
+            
+            setTimeout(() => {
+                if (newText) {
+                    newText.style.animation = 'glow 1.5s ease';
+                }
+            }, 600);
+        }
+    });
+}, {threshold: 0.3});
+
+inoCards.forEach((card, idx) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px) scale(0.95)';
+    card.style.transition = `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${idx * 0.1}s`;
+    inoObserver.observe(card);
+});
+
+// ====== 定位卡片悬停动画 ======
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.2)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = 'none';
+    });
+});
+
+// ====== 导航栏滚动效果 ======
+const nav = document.querySelector('nav');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        nav.style.padding = '0.75rem 2rem';
+        nav.style.background = 'rgba(10, 10, 15, 0.98)';
+    } else {
+        nav.style.padding = '1rem 2rem';
+        nav.style.background = 'rgba(10, 10, 15, 0.95)';
+    }
+});
+
+// ====== 价格卡片动画 ======
+const priceCards = document.querySelectorAll('.hlc');
+
+const priceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {threshold: 0.2});
+
+priceCards.forEach((card, idx) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${idx * 0.15}s`;
+    priceObserver.observe(card);
+});
+
+// ====== 添加CSS动画关键帧 ======
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(0.98); }
+    }
+    
+    @keyframes glow {
+        0%, 100% { text-shadow: none; }
+        50% { text-shadow: 0 0 20px rgba(67, 233, 123, 0.8); }
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .badge {
+        animation: float 3s ease-in-out infinite;
+    }
+`;
+document.head.appendChild(style);
+
+// ====== 平滑滚动增强 ======
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+console.log('SIO-MMOS Demo initialized successfully');
+</script>
+</body>
+</html>

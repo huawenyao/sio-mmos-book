@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阅读器 | SIO-MMOS丛书</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="reader.css">
+</head>
+<body>
+<!-- 侧边目录 -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="book-show.html" class="back-link">← 返回</a>
+    <h2 class="sidebar-title">SIO-MMOS丛书</h2>
+  </div>
+  <div class="volume-selector">
+    <button class="vol-btn active" data-vol="1">第一卷</button>
+    <button class="vol-btn" data-vol="2">第二卷</button>
+    <button class="vol-btn" data-vol="3">第三卷</button>
+    <button class="vol-btn" data-vol="4">实践指南</button>
+  </div>
+  <nav class="toc" id="toc">
+    <!-- 动态生成目录 -->
+  </nav>
+  <div class="sidebar-footer">
+    <div class="progress-info">
+      <span class="progress-text">阅读进度</span>
+      <span class="progress-percent" id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+</aside>
+
+<!-- 主阅读区域 -->
+<main class="reader-main" id="readerMain">
+  <div class="reader-toolbar">
+    <button class="toolbar-btn" id="tocToggle" title="目录">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <div class="toolbar-center">
+      <span class="current-chapter" id="currentChapter">系统存在论与生成论</span>
+    </div>
+    <div class="toolbar-right">
+      <button class="toolbar-btn" id="fontDown" title="减小字体">A-</button>
+      <button class="toolbar-btn" id="fontUp" title="增大字体">A+</button>
+      <button class="toolbar-btn" id="themeToggle" title="切换主题">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <article class="reader-content" id="readerContent">
+    <!-- 内容将动态加载 -->
+    <div class="loading-placeholder">
+      <div class="loading-spinner"></div>
+      <p>正在加载内容...</p>
+    </div>
+  </article>
+  
+  <nav class="chapter-nav">
+    <button class="nav-prev" id="prevChapter">
+      <span class="nav-label">上一章</span>
+      <span class="nav-title" id="prevTitle"></span>
+    </button>
+    <button class="nav-next" id="nextChapter">
+      <span class="nav-label">下一章</span>
+      <span class="nav-title" id="nextTitle"></span>
+    </button>
+  </nav>
+</main>
+
+<!-- 浮动工具栏 -->
+<div class="float-tools" id="floatTools">
+  <button class="float-btn" id="bookmarkBtn" title="添加书签">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+  <button class="float-btn" id="highlightBtn" title="高亮文本">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+    </svg>
+  </button>
+  <button class="float-btn" id="shareBtn" title="分享">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+    </svg>
+  </button>
+</div>
+
+<!-- 书签面板 -->
+<div class="bookmark-panel" id="bookmarkPanel">
+  <div class="panel-header">
+    <h3>我的书签</h3>
+    <button class="close-panel" id="closeBookmark">&times;</button>
+  </div>
+  <ul class="bookmark-list" id="bookmarkList">
+    <!-- 动态生成书签列表 -->
+  </ul>
+</div>
+
+<script src="marked.min.js"></script>
+<script src="reader.js"></script>
+</body>
+</html>
