@@ -380,4 +380,39 @@ document.getElementById('chapterModal').addEventListener('click', (e) => {
     if (e.target.id === 'chapterModal') closeModal();
 });
 
+// ====== GitHub Star Count ======
+async function fetchGitHubStars() {
+    const starCountEl = document.getElementById('starCount');
+    if (!starCountEl) return;
+    
+    try {
+        const response = await fetch('https://api.github.com/repos/huawenyao/sio-mmos-book');
+        if (response.ok) {
+            const data = await response.json();
+            const count = data.stargazers_count;
+            starCountEl.textContent = count > 0 ? count : '';
+            
+            // Cache the star count in localStorage for 1 hour
+            localStorage.setItem('githubStars', JSON.stringify({
+                count: count,
+                timestamp: Date.now()
+            }));
+        }
+    } catch (error) {
+        // Try to use cached data if fetch fails
+        const cached = localStorage.getItem('githubStars');
+        if (cached) {
+            const data = JSON.parse(cached);
+            // Use cache if less than 1 hour old
+            if (Date.now() - data.timestamp < 3600000) {
+                starCountEl.textContent = data.count > 0 ? data.count : '';
+            }
+        }
+        console.log('GitHub API rate limited or unavailable');
+    }
+}
+
+// Initialize GitHub stars on page load
+fetchGitHubStars();
+
 console.log('SIO-MMOS Book Show initialized');
