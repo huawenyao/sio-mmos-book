@@ -244,7 +244,61 @@ body {
   color: var(--text-primary);
 }
 
-.toolbar-right { display: flex; gap: 0.5rem; }
+.toolbar-right { display: flex; gap: 0.5rem; flex-shrink: 0; }
+
+/* GitHub Star（与书籍展示页一致，顶栏全局入口） */
+.toolbar-star-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.reader-star-hint {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+  max-width: 11.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reader-github-star.github-star {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.reader-github-star.github-star:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.reader-github-star.github-star .star-count {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  min-width: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
 
 /* Reader Content */
 .reader-content {
@@ -601,6 +655,15 @@ body {
   .float-tools {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .reader-star-hint {
+    display: none;
+  }
+
+  .toolbar-star-wrap {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
   }
   
   .chapter-nav {

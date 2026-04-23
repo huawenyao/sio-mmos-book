@@ -338,3 +338,33 @@ function renderBookmarks() {
     });
   });
 }
+
+// GitHub Star 数量（与 book-show 页共用 localStorage 缓存键）
+async function fetchGitHubStars() {
+  const starCountEl = document.getElementById('readerStarCount');
+  if (!starCountEl) return;
+
+  try {
+    const response = await fetch('https://api.github.com/repos/huawenyao/sio-mmos-book');
+    if (response.ok) {
+      const data = await response.json();
+      const count = data.stargazers_count;
+      starCountEl.textContent = count > 0 ? count : '';
+      localStorage.setItem('githubStars', JSON.stringify({
+        count: count,
+        timestamp: Date.now()
+      }));
+    }
+  } catch (error) {
+    const cached = localStorage.getItem('githubStars');
+    if (cached) {
+      const data = JSON.parse(cached);
+      if (Date.now() - data.timestamp < 3600000) {
+        starCountEl.textContent = data.count > 0 ? data.count : '';
+      }
+    }
+  }
+}
+
+fetchGitHubStars();
+
