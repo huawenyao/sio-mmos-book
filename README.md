@@ -23,6 +23,12 @@
 
 🌐 **GitHub Pages**: [https://huawenyao.github.io/sio-mmos-book/](https://huawenyao.github.io/sio-mmos-book/)
 
+### 从 `github.io` 被跳到自定义域名时
+
+本仓库的静态页面**没有**写任何跳转到 `siommos.book` 的脚本。若访问 `https://huawenyao.github.io/...` 时浏览器地址栏会跳到 `http://siommos.book/...`，这是 **GitHub Pages 在仓库里配置了自定义域名（Custom domain）之后，由服务器返回的 HTTP 301 重定向**，并非页面内 JavaScript。
+
+若希望 **`github.io` 与自定义域名并存、不自动跳到后者**，请到 GitHub：**仓库 → Settings → Pages**，在 **Custom domain** 中清空并保存（或移除仓库根目录的 `CNAME` 文件），等待 DNS 与 Pages 刷新后再试。若希望统一使用自定义域名，保留现状即可，README 中的 `github.io` 链接在浏览器里会落到你的主域名。
+
 ## 页面导航
 
 ### 📚 1. 营销首页 (`/book-show/index.html`)
