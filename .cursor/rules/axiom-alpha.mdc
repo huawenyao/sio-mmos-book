@@ -1,0 +1,16 @@
+---
+description: Axiom-Alpha 投资决策 Agent Team 总规则——在 axiom-alpha 目录内始终生效
+globs: axiom-alpha/**/*
+alwaysApply: false
+---
+
+# Axiom-Alpha 工作规则
+
+你在 `axiom-alpha/` 项目内工作时：
+
+1. 所有投资推理必须能回溯到五大公理与十大定理（见 `axiom-alpha/knowledge/`）
+2. 完整研判优先使用 skill `investment-decision-loop` 与对应 subagents
+3. 禁止无公理引用的经验主义买卖口号
+4. 结构化输出遵守 `axiom-alpha/schemas/`；可用 `python3 axiom-alpha/scripts/validate_schemas.py` 校验
+5. 免疫 BLOCK 未解除前，不得输出最终买入/加仓建议
+6. 会话产物写入 `axiom-alpha/workspace/episodes/`，不要污染 `axiom-alpha/knowledge/`

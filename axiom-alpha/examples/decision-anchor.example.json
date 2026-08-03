@@ -1,0 +1,86 @@
+{
+  "overall_stance": "中性",
+  "conviction_level": 0.55,
+  "causal_chain": [
+    {
+      "level": "L4产业",
+      "cause": "产能扩张放缓但需求增速亦放缓",
+      "effect": "价值边界仍在，但上沿承压",
+      "axiom_reference": "A1/A3/T1",
+      "evidence": ["行业开工率回落", "成本线附近反复"],
+      "confidence": 0.6,
+      "time_lag": "1-2个季度"
+    },
+    {
+      "level": "L2量价",
+      "cause": "资金边际流入不连续",
+      "effect": "不足以确认趋势突破",
+      "axiom_reference": "A2/T2",
+      "evidence": ["近10日主力净流入波动大"],
+      "confidence": 0.65,
+      "time_lag": "日-周"
+    }
+  ],
+  "stasis_conclusion": {
+    "summary": "存量结构大致稳定，震荡区间有效",
+    "axiom_refs": ["A1", "A3", "T1"],
+    "confidence": 0.6,
+    "pattern_matched": "oscillation"
+  },
+  "flow_conclusion": {
+    "summary": "增量不持续，趋势能量不足",
+    "axiom_refs": ["A2", "T2"],
+    "confidence": 0.65,
+    "pattern_matched": "oscillation"
+  },
+  "consensus_conclusion": {
+    "summary": "预期略高于已落地增量，存在轻度透支",
+    "axiom_refs": ["A4", "T5"],
+    "confidence": 0.55,
+    "pattern_matched": "virtual_over_real"
+  },
+  "feedback_conclusion": {
+    "summary": "未进入强化正反馈，亦未见明确衰竭拐点",
+    "axiom_refs": ["A5", "T3"],
+    "confidence": 0.5,
+    "pattern_matched": "oscillation"
+  },
+  "action_plan": {
+    "primary_action": "观望 / 仅边界附近小仓试探",
+    "position_sizing": "≤总仓位10%试仓，不追涨",
+    "entry_conditions": ["价格回落至下边界附近", "出现连续多日正向资金边际"],
+    "exit_conditions": ["跌破有效下边界", "虚实缺口扩大且增量转负"],
+    "timing_notes": "震荡定理主导，禁止突破追单"
+  },
+  "risk_framework": {
+    "key_risks": ["把反弹当反转", "题材叙事透支"],
+    "stop_logic": "有效下边界失守即止损（A3）",
+    "max_drawdown_tolerance": "单笔≤2%净值",
+    "boundary_distance_warning": "远离下边界不抄底"
+  },
+  "falsification_conditions": [
+    {
+      "condition": "连续3周同向资金+供需增量共振",
+      "monitoring_method": "资金流+产业高频数据",
+      "implication": "震荡假设失效，可能切换趋势定理",
+      "alternative_action": "上调仓位并跟踪突破确认",
+      "probability": 0.25
+    }
+  ],
+  "monitoring_checklist": [
+    {
+      "variable": "主力净流入持续性",
+      "threshold": "连续≥5日同向",
+      "axiom_link": "A2",
+      "frequency": "日"
+    },
+    {
+      "variable": "价格相对成本/估值边界偏离",
+      "threshold": ">2σ 警告",
+      "axiom_link": "A3/T4",
+      "frequency": "日"
+    }
+  ],
+  "emergent_insights": [],
+  "immune_verdict": "PASS"
+}

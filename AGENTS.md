@@ -5,27 +5,31 @@
 **Branch:** main
 
 ## OVERVIEW
-SIO-MMOS丛书 static site — 纯静态HTML/CSS/JS书籍展示与阅读器，无构建系统。
+SIO-MMOS丛书 static site — 纯静态HTML/CSS/JS书籍展示与阅读器，无构建系统。  
+另含 **Axiom-Alpha**：投资第一性原理 Agent Team（Cursor Skills + Subagents）。
 
 ## STRUCTURE
 ```
 .
 ├── SSIO-BOOK/          # 丛书Markdown源文件（33个.md）
-│   ├── 00总纲/         # 总纲与项目总结
-│   ├── 01大纲/         # 四卷详细大纲
-│   ├── 02正文/         # 各卷正文
-│   ├── 03附录/         # 实践指南
-│   └── FILE_INDEX.md   # 文件索引
 ├── book-show/          # 网站前端（所有代码）
-│   ├── index.html      # 营销首页
-│   ├── book-show.html  # 书籍展示/预览
-│   ├── reader.html     # 在线阅读器
-│   ├── *.css           # 样式
-│   ├── *.js            # 脚本
-│   └── marked.min.js   # Markdown渲染库（第三方）
-├── CLAUDE.md           # 现有项目指南
-└── *.md                # 根级项目文档
+├── axiom-alpha/        # 投资决策认知有机体（知识库/契约/脚本）
+├── .cursor/
+│   ├── agents/         # Axiom-Alpha Agent Team（10 subagents）
+│   ├── skills/         # PARR 循环与专项 skills
+│   └── rules/          # axiom-alpha 作用域规则
+├── CLAUDE.md
+└── *.md
 ```
+
+## AXIOM-ALPHA（投资 Agent Team）
+| Task | Location | Notes |
+|------|----------|-------|
+| 完整决策循环 | `/investment-decision-loop` | PARR：意图→规划→召唤→免疫→决策锚点 |
+| 知识库 | `axiom-alpha/knowledge/` | 五大公理、十大定理、融合分析模型 |
+| Subagents | `.cursor/agents/` | intent/planner/experts/immune/dialectic/decision |
+| 校验 | `axiom-alpha/scripts/` | schema 校验 + 先天免疫检查 |
+| 详述 | `axiom-alpha/AGENTS.md` | 团队角色与硬约束 |
 
 ## WHERE TO LOOK
 | Task | Location | Notes |

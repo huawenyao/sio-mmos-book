@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom-alpha.local/schemas/decision_anchor.json",
+  "title": "DecisionAnchor",
+  "type": "object",
+  "required": [
+    "overall_stance",
+    "conviction_level",
+    "causal_chain",
+    "stasis_conclusion",
+    "flow_conclusion",
+    "consensus_conclusion",
+    "feedback_conclusion",
+    "action_plan",
+    "risk_framework",
+    "falsification_conditions",
+    "monitoring_checklist"
+  ],
+  "properties": {
+    "overall_stance": {
+      "type": "string",
+      "enum": ["强看多", "看多", "中性", "看空", "强看空"]
+    },
+    "conviction_level": { "type": "number", "minimum": 0, "maximum": 1 },
+    "causal_chain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["level", "cause", "effect", "axiom_reference", "evidence", "confidence"],
+        "properties": {
+          "level": { "type": "string" },
+          "cause": { "type": "string" },
+          "effect": { "type": "string" },
+          "axiom_reference": { "type": "string" },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "time_lag": { "type": "string" }
+        }
+      }
+    },
+    "stasis_conclusion": { "$ref": "#/$defs/AxiomConclusion" },
+    "flow_conclusion": { "$ref": "#/$defs/AxiomConclusion" },
+    "consensus_conclusion": { "$ref": "#/$defs/AxiomConclusion" },
+    "feedback_conclusion": { "$ref": "#/$defs/AxiomConclusion" },
+    "action_plan": {
+      "type": "object",
+      "required": ["primary_action", "position_sizing", "entry_conditions", "exit_conditions"],
+      "properties": {
+        "primary_action": { "type": "string" },
+        "position_sizing": { "type": "string" },
+        "entry_conditions": { "type": "array", "items": { "type": "string" } },
+        "exit_conditions": { "type": "array", "items": { "type": "string" } },
+        "timing_notes": { "type": "string" }
+      }
+    },
+    "risk_framework": {
+      "type": "object",
+      "required": ["key_risks", "stop_logic", "max_drawdown_tolerance"],
+      "properties": {
+        "key_risks": { "type": "array", "items": { "type": "string" } },
+        "stop_logic": { "type": "string" },
+        "max_drawdown_tolerance": { "type": "string" },
+        "boundary_distance_warning": { "type": "string" }
+      }
+    },
+    "falsification_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["condition", "monitoring_method", "implication", "alternative_action"],
+        "properties": {
+          "condition": { "type": "string" },
+          "monitoring_method": { "type": "string" },
+          "implication": { "type": "string" },
+          "alternative_action": { "type": "string" },
+          "probability": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "monitoring_checklist": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["variable", "threshold", "axiom_link"],
+        "properties": {
+          "variable": { "type": "string" },
+          "threshold": { "type": "string" },
+          "axiom_link": { "type": "string" },
+          "frequency": { "type": "string" }
+        }
+      }
+    },
+    "emergent_insights": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "immune_verdict": {
+      "type": "string",
+      "enum": ["PASS", "WARN", "FORCE_DIALECTIC", "BLOCK", "EMERGENCY_STOP"]
+    }
+  },
+  "$defs": {
+    "AxiomConclusion": {
+      "type": "object",
+      "required": ["summary", "axiom_refs", "confidence"],
+      "properties": {
+        "summary": { "type": "string" },
+        "axiom_refs": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidence": { "type": "array", "items": { "type": "string" } },
+        "pattern_matched": { "type": "string" }
+      }
+    }
+  }
+}

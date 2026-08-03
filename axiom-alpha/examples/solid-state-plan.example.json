@@ -1,0 +1,43 @@
+{
+  "priority_questions": [
+    {
+      "id": "penetration",
+      "question": "固态电池产业当前处于S曲线的哪个位置？渗透率多少？",
+      "axiom_dimension": "stasis_field",
+      "information_value": 0.95,
+      "required_capabilities": ["stasis-cartographer"],
+      "estimated_depth": 3,
+      "fallback_strategy": "若无精确渗透率，用产业链融资事件密度做代理指标"
+    },
+    {
+      "id": "marginal_delta",
+      "question": "近30天有哪些边际变化量？哪类流在驱动？",
+      "axiom_dimension": "flow_dynamics",
+      "information_value": 0.9,
+      "required_capabilities": ["flow-tracker"],
+      "estimated_depth": 2,
+      "fallback_strategy": "若资金流不完整，用量价行为反推能量流方向"
+    },
+    {
+      "id": "pricing",
+      "question": "市场对固态电池的预期是否已被充分定价？",
+      "axiom_dimension": "consensus_state",
+      "information_value": 0.85,
+      "required_capabilities": ["consensus-observer"],
+      "estimated_depth": 3,
+      "fallback_strategy": "若缺乏情绪数据，用板块相对强度vs大盘间接推断"
+    }
+  ],
+  "dependency_graph": {
+    "penetration": [],
+    "marginal_delta": ["penetration"],
+    "pricing": ["marginal_delta"]
+  },
+  "sufficiency_criteria": [
+    "已确定产业S曲线位置（公理1）",
+    "已识别主导增量类型和方向（公理2）",
+    "已评估虚实匹配度（公理4）",
+    "三个维度结论不矛盾，或矛盾已通过辩证引擎解决"
+  ],
+  "exploration_budget": 0.3
+}

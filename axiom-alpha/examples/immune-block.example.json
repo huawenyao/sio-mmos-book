@@ -1,0 +1,15 @@
+{
+  "conclusion": "trend_breakout",
+  "delta_evidence": { "confidence": 0.4 },
+  "price_deviation_from_boundary": 1.2,
+  "risk_assessment": "medium",
+  "erg_gap": 0.1,
+  "material_flow_acceleration": 0.2,
+  "stance": "bullish",
+  "delta_acceleration": 0.1,
+  "delta_momentum": { "declining_for_periods": 0 },
+  "is_final_decision": false,
+  "axiom_refs": ["A2"],
+  "conviction_level": 0.6,
+  "min_evidence_confidence": 0.55
+}
