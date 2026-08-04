@@ -46,15 +46,28 @@
 - `AGENTS.md`
 - `knowledge/axioms/five-axioms.md`
 
+## 交互看板 Demo
+
+```bash
+python3 -m http.server 8000
+# 访问 http://localhost:8000/axiom-alpha/demo/
+```
+
+- **业务维**：市场/大盘 → 行业/概念 → 个股（可钻取）
+- **信息维**：事件资讯 → 行情数据 → 分析指标 → 洞察标签
+- **认知维**：PARR 循环 + 四大公理透镜筛选
+- **输出**：个股层决策锚点（仓位/介入/证伪）
+
 ## 目录
 
 ```
 axiom-alpha/
+├── demo/                # 交互式决策看板 HTML
 ├── knowledge/           # 公理、定理、分析模型、模板
 ├── schemas/             # Intent / Plan / Decision 契约
 ├── scripts/             # Schema 校验 + 先天免疫检查
 ├── examples/            # 示例输入
-├── workspace/episodes/  # 运行产物（gitignore 可选）
+├── workspace/episodes/  # 运行产物
 ├── AGENTS.md
 └── README.md
 

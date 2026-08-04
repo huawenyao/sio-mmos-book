@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Axiom-Alpha · 投资决策交互看板</title>
+  <meta name="description" content="基于投资第一性原理的交互式决策看板：市场→行业→个股业务流，事件→行情→指标→洞察数据流" />
+  <link rel="stylesheet" href="./board.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Hero: one composition — brand + intent + session -->
+    <header class="hero">
+      <div class="brand-block">
+        <div class="brand-kicker"><i></i> Investment Decision Framework</div>
+        <h1 class="brand-name">Axiom-<span>Alpha</span> 决策看板</h1>
+        <p class="brand-lead">
+          按方法论标准逻辑运转：业务自上而下钻取（市场→行业→个股），
+          信息自左向右沉淀（事件→行情→指标→洞察），认知透镜贯穿始终。
+        </p>
+      </div>
+      <div class="hero-controls">
+        <form class="intent-box" id="intentForm">
+          <input id="intentInput" type="search" placeholder="输入意图，例如：小米现在能不能买 / HBM板块阶段 / 大盘风险偏好" autocomplete="off" />
+          <button type="submit">启动 PARR</button>
+        </form>
+        <div class="meta-row">
+          <span>As of <strong id="asOf">—</strong></span>
+          <span id="session">—</span>
+          <span id="intentHint"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cognitive rails -->
+    <section class="rails" aria-label="认知流程">
+      <div class="rail">
+        <h2>PARR 认知循环</h2>
+        <div class="parr-track" id="parrTrack"></div>
+      </div>
+      <div class="rail">
+        <h2>公理透镜（筛选数据流）</h2>
+        <div class="lens-row" id="lensRow"></div>
+      </div>
+    </section>
+
+    <!-- Business dimensions -->
+    <nav class="biz-bar" aria-label="业务维度">
+      <span class="label">业务维</span>
+      <button class="biz-tab active" data-biz="market">市场 / 大盘</button>
+      <button class="biz-tab" data-biz="industry">行业 / 概念</button>
+      <button class="biz-tab" data-biz="stock">个股</button>
+      <div class="crumb" id="crumb">市场 / 大盘</div>
+    </nav>
+
+    <div class="main">
+      <!-- Data flow -->
+      <aside class="panel flow-rail" aria-label="信息数据流">
+        <div class="panel-hd">
+          <h3>信息数据流</h3>
+          <span>DEPTH</span>
+        </div>
+        <div class="flow-formula" id="flowFormula">
+          市场演化 = 静态边界 ⊕ 动态增量 ⊕ 虚实自反馈
+        </div>
+        <div class="flow-steps" id="flowSteps"></div>
+        <div class="legend">
+          <strong>用法：</strong>先选业务层，再沿 1→4 走完数据流；点击公理透镜只高亮相关指标/事件。个股层才会生成完整决策锚点。
+        </div>
+      </aside>
+
+      <!-- Workspace -->
+      <section class="panel workspace" aria-label="研判工作区">
+        <div class="entity-head" id="entityHead"></div>
+        <p class="entity-summary" id="entitySummary"></p>
+        <div class="info-tabs" role="tablist">
+          <button class="info-tab active" data-info="events" role="tab">⚡ 事件资讯</button>
+          <button class="info-tab" data-info="quotes" role="tab">▦ 行情数据</button>
+          <button class="info-tab" data-info="metrics" role="tab">◎ 分析指标</button>
+          <button class="info-tab" data-info="insights" role="tab">◇ 洞察标签</button>
+        </div>
+        <div class="info-body" id="infoBody" role="tabpanel"></div>
+        <div style="padding:0 18px 14px;font-family:var(--font-mono);font-size:11px;color:var(--muted)" id="infoDimLabel"></div>
+      </section>
+
+      <!-- Decision -->
+      <aside class="panel decision-panel" aria-label="决策锚点">
+        <div class="panel-hd">
+          <h3>决策锚点</h3>
+          <span>ANCHOR</span>
+        </div>
+        <div class="body" id="decisionBody"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="./data.js"></script>
+  <script src="./board.js"></script>
+</body>
+</html>

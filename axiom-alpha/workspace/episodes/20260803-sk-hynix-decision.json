@@ -1,0 +1,189 @@
+{
+  "overall_stance": "看多",
+  "conviction_level": 0.62,
+  "causal_chain": [
+    {
+      "level": "L4产业",
+      "cause": "AI算力扩张 + HBM挤占晶圆产能 → 存储进入卖方市场",
+      "effect": "存量供需边界上移，ASP与盈利中枢结构性抬升",
+      "axiom_reference": "A1/A2/A3/T2/T10",
+      "evidence": [
+        "HBM约占其晶圆产能约30%，2026年HBM产能售罄",
+        "库存约4周，卖方市场",
+        "Q2 DRAM ASP环比+30%，NAND ASP环比+50%~55%"
+      ],
+      "confidence": 0.78,
+      "time_lag": "已兑现并延续至2027"
+    },
+    {
+      "level": "L5宏观/客户",
+      "cause": "云厂商AI capex仍扩张 + LTA锁量锁价",
+      "effect": "实增量具备多季度可见度，短期供给难快速释放",
+      "axiom_reference": "A2/T6/T7",
+      "evidence": [
+        "约10家客户LTA",
+        "公司表态2027供需或更紧，约束或延至2030",
+        "新产能大规模放量多在2027后"
+      ],
+      "confidence": 0.7,
+      "time_lag": "2-6个季度"
+    },
+    {
+      "level": "L3情绪/估值",
+      "cause": "盈利高位时Forward PE压缩至约3~5x + Q2营收/利润不及预期",
+      "effect": "虚预期对股价的拉动减弱，价格从极致回落进入高波动消化",
+      "axiom_reference": "A4/A5/T3/T5",
+      "evidence": [
+        "52周高点约298.7万韩元，现价约160万韩元附近剧烈波动",
+        "ADR SKHY约$144，52周高约$195",
+        "Q2营收79.32万亿韩元、营业利润60.54万亿韩元均低于一致预期"
+      ],
+      "confidence": 0.72,
+      "time_lag": "日-周级已发生"
+    },
+    {
+      "level": "L2量价",
+      "cause": "产业正反馈仍在，价格正反馈阶段性受挫",
+      "effect": "大周期趋势未证伪，短周期进入高波动震荡/回撤窗口",
+      "axiom_reference": "A5/T7/T1",
+      "evidence": [
+        "产业层增量未衰竭，价格层动量明显减弱",
+        "分析师目标价中枢仍显著高于现价，但分歧加大"
+      ],
+      "confidence": 0.64,
+      "time_lag": "嵌套：产业季线 vs 股价日周线"
+    }
+  ],
+  "stasis_conclusion": {
+    "summary": "产业存量边界已被HBM超级周期重塑：卖方市场+寡头供给纪律构成有效上边界支撑；股价52周高点附近的筹码/估值边界已被击穿后回落，当前位置更接近「趋势回调带」而非产业下边界。",
+    "axiom_refs": ["A1", "A3", "T4", "T10"],
+    "confidence": 0.72,
+    "evidence": [
+      "有效支撑结构：HBM技术壁垒、EUV瓶颈、3x晶圆占用、寡头capex纪律",
+      "破坏条件：三星HBM4追平导致份额/定价权崩塌、云厂商capex骤降、2028+新产能共振过剩"
+    ],
+    "pattern_matched": "trend_emergence"
+  },
+  "flow_conclusion": {
+    "summary": "五要素中产业供需与业绩绝对增量仍强，但业绩相对预期（边际斜率）转弱；情绪/价格资金波动大。总体仍有正向产业流，但熵增上升，不宜按「加速度加速」交易。",
+    "axiom_refs": ["A2", "T2", "T3", "T9"],
+    "confidence": 0.68,
+    "evidence": [
+      "供需：紧缺持续（+）",
+      "业绩：绝对高增但Q2 miss（斜率-/持续性待观察）",
+      "政策：韩国AI制造投资支持（弱+）",
+      "情绪：周期见顶恐惧与超级周期叙事对撞（散乱）",
+      "资金：高波动换手，非单边持续净流入"
+    ],
+    "pattern_matched": "entropy_increase"
+  },
+  "consensus_conclusion": {
+    "summary": "叙事仍是「HBM之王/超级周期」，但盈利高点伴随PE压缩与财报miss，虚对股价的加持已弱于实对产业的支撑——属轻度虚实错位：产业未泡沫化，股价预期曾透支后正在修正。",
+    "axiom_refs": ["A4", "T5", "T6"],
+    "confidence": 0.66,
+    "evidence": [
+      "主题生命周期：产业层仍属虚实共振主线；股价层从一致预期拥挤转向退潮修正",
+      "ERG：产业实增量>短期股价虚预期修复后的定价；但若按「马上再创新高」则虚>实"
+    ],
+    "pattern_matched": "virtual_real_resonance"
+  },
+  "feedback_conclusion": {
+    "summary": "反馈阶段判断为「产业强化 / 股价由极致进入消化」。未见产业势能衰竭（T3未触发），但价格正反馈已中断。应按嵌套周期操作：顺产业大趋势，逆短线追涨。",
+    "axiom_refs": ["A5", "T3", "T7"],
+    "confidence": 0.63,
+    "evidence": [
+      "正反馈：短缺→涨价→盈利→再投资叙事仍在",
+      "负反馈：估值压缩+miss+波动放大已出现",
+      "拐点条件尚未满足：增量由正转负未确认"
+    ],
+    "pattern_matched": "phase_transition"
+  },
+  "action_plan": {
+    "primary_action": "可以买，但只能「回调分批试仓/加仓」，禁止追涨；现价若处于急跌波动中，用限价分批而非市价一把干。",
+    "position_sizing": "总仓建议15%~30%分3批；单笔建仓不超过总仓10%。风险偏好低则先10%~15%。",
+    "entry_conditions": [
+      "产业侧：HBM供给仍紧、ASP未环比转负、云厂商capex指引未明显下修",
+      "价格侧：急跌后波动收敛，或回踩关键筹码带后出现量能萎缩止跌",
+      "预期侧：不再用「立刻新高」定价，接受高波动震荡持有"
+    ],
+    "exit_conditions": [
+      "产业证伪：HBM定价权明显弱化（三星份额快速侵蚀+ASP环比转负）",
+      "客户证伪：主要云厂商集体下调AI capex",
+      "价格纪律：跌破本轮自定结构止损（建议以建仓均价-18%~25%或明确破位位）",
+      "虚实恶化：财报连续miss且指引转弱，同时估值不再压缩而是盈利下修主导"
+    ],
+    "timing_notes": "更优买点是波动消化后的第二批/第三批，而非情绪冰点或情绪高潮任一侧的一把梭。"
+  },
+  "risk_framework": {
+    "key_risks": [
+      "经典存储周期尾部：盈利最靓时PE最便宜，随后盈利下修（周期陷阱）",
+      "三星HBM4追赶压缩溢价",
+      "2028年后新产能集中释放",
+      "韩股/ADR高波动与汇率风险",
+      "外生冲击：出口管制、地缘、云资本开支骤停"
+    ],
+    "stop_logic": "以产业证伪优先、价格纪律为辅：产业未坏可容忍大幅回撤；一旦ASP/订单/capex三信号转弱，立即降维减仓，不与趋势定理对赌。",
+    "max_drawdown_tolerance": "该笔头寸回撤超过25%强制复盘；组合层面单标的风险预算建议≤组合净值4%。",
+    "boundary_distance_warning": "相对52周高点已大幅回撤，但相对产业下边界并不「极度便宜到无风险」；禁止因Forward PE低就判定低风险（A3）。"
+  },
+  "falsification_conditions": [
+    {
+      "condition": "未来2个季度DRAM/HBM ASP环比转负，或公司明确下调卖方市场判断",
+      "monitoring_method": "季报ASP指引、TrendForce报价、公司电话会",
+      "implication": "增量定理失效，趋势切换为震荡/下行",
+      "alternative_action": "停止加仓并减至观察仓或清仓",
+      "probability": 0.28
+    },
+    {
+      "condition": "三星HBM4规模量产并显著抢单，SK海力士HBM份额快速跌破主导区间",
+      "monitoring_method": "份额追踪、客户认证新闻、毛利率走势",
+      "implication": "存量护城河削弱，估值溢价不可维持",
+      "alternative_action": "下调仓位上限，改为交易型波段",
+      "probability": 0.3
+    },
+    {
+      "condition": "美系云巨头连续两个指引期大幅下调AI基础设施开支",
+      "monitoring_method": "FAANG/MSFT/GOOGL/AMZN/META财报capex",
+      "implication": "需求端增量衰竭（T3）",
+      "alternative_action": "退出或对冲半导体敞口",
+      "probability": 0.22
+    }
+  ],
+  "monitoring_checklist": [
+    {
+      "variable": "DRAM/HBM ASP环比",
+      "threshold": "连续转负=减仓触发",
+      "axiom_link": "A2/T3",
+      "frequency": "月/季"
+    },
+    {
+      "variable": "云厂商AI capex指引",
+      "threshold": "环比显著下修",
+      "axiom_link": "A2/A4",
+      "frequency": "季报季"
+    },
+    {
+      "variable": "HBM份额与HBM4良率/出货",
+      "threshold": "份额失速或良率事故",
+      "axiom_link": "A1/A3",
+      "frequency": "月"
+    },
+    {
+      "variable": "Forward PE与盈利修正方向",
+      "threshold": "PE被动抬升因盈利下修（非股价跌）",
+      "axiom_link": "A4/T5",
+      "frequency": "周"
+    },
+    {
+      "variable": "股价波动与放量破位",
+      "threshold": "放量跌破自定结构止损",
+      "axiom_link": "A5/T1",
+      "frequency": "日"
+    }
+  ],
+  "emergent_insights": [
+    "关键分叉不在「AI有没有需求」，而在「供给纪律能否维持到2027」——供给纪律才是定价权的序参量。",
+    "通用DRAM因HBM排挤出现结构性真空，使周期品逻辑与AI成长逻辑缠绕；用单一PE框架会误判。"
+  ],
+  "immune_verdict": "PASS"
+}
